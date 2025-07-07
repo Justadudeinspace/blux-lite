@@ -1,6 +1,6 @@
 ## blux-lite/llama_chat.py
 
-```python
+python
 import requests, subprocess, os, json
 
 MEMORY_FILE = os.path.expanduser("~/blux-lite/memory.json")
@@ -90,4 +90,4 @@ while True:
         self_check()
     else:
         local_llm(cmd)
-```
+
