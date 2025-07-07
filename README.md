@@ -4,7 +4,7 @@
   <b>"The Sovereign Termux AI Developers Assistant."</b>
 </p>
 
-# BLUX Sovereign Lite ©️
+# ©️ BLUX Sovereign Lite
 
 ---
 
