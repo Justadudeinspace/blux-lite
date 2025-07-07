@@ -1,8 +1,12 @@
-
+<p align="center">
+  <img src="assets/blux_logo.jpg" alt="BLUX-Lite Logo">
+</p>
 
 <p align="center">
-  <b>"The Sovereign Termux AI Developers Assistant."</b>
+  <b>A Sovereign Termux AI Developers Assistant</b>
 </p>
+
+---
 
 # ©️ BLUX Sovereign Lite
 
