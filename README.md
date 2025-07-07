@@ -24,8 +24,6 @@
 
 ---
 
-## blux-sovereign-lite/
-
 ```
 blux-lite/
 ├── README.md
