@@ -22,7 +22,7 @@ chmod +x blux_lite.sh
 
 ```
 proot-distro login ubuntu
-apt update && apt install curl python3-pip nano -y
+apt update && apt install curl python3 nano -y
 curl -fsSL https://ollama.com/install.sh | sh
 ollama pull llama3:instruct
 apt install ddgr -y
