@@ -1,0 +1,10 @@
+────────────────────────────────────────
+🤖 Welcome to BLUX Sovereign Lite
+Your fully offline AI terminal assistant.
+────────────────────────────────────────
+Use:
+search: <your query>    → Web lookup (no API)
+read: <path/to/file>    → Scan a local file
+<anything else>         → Talk to LLaMA AI
+────────────────────────────────────────
+🧠 Tip: Use 'ollama serve &' to keep AI running in background.
