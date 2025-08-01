@@ -7,7 +7,7 @@ pkg install python git curl termux-api nano -y
 termux-setup-storage
 
 echo "🔌 Installing Python dependencies..."
-pip install --no-cache-dir litellm ollama-python open-webui
+pip install --no-cache-dir ollama-python
 
 echo "📂 Cloning BLUX repo (if missing)..."
 [ ! -d "$HOME/blux-lite" ] && git clone https://github.com/Justadudeinspace/blux-lite.git ~/blux-lite
@@ -28,8 +28,6 @@ sleep 3
 echo "⬇️ Running model installer..."
 bash install_models.sh
 
-echo "📡 Starting LiteLLM local proxy..."
-bash start_litellm.sh
 
 echo "🔊 Checking Termux API voice plugin..."
 if ! command -v termux-tts-speak >/dev/null; then
