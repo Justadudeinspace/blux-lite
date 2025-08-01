@@ -1,34 +1,48 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
 set -e
 
-echo "─────────────────────────────"
-echo "BLUX Sovereign Lite Installer"
-echo "─────────────────────────────"
-
-# Termux prerequisites
-pkg update && pkg upgrade -y
-pkg install python git curl proot-distro termux-api nano -y
-pip install --upgrade pip
+echo "📦 Updating packages..."
+pkg update -y && pkg upgrade -y
+pkg install python git curl termux-api nano -y
 termux-setup-storage
 
-# Move to proper install path
-INSTALL_DIR=~/blux-lite
-if [ ! -f "$INSTALL_DIR/README.md" ]; then
-    echo "✅ Cloning fresh blux-lite from GitHub..."
-    rm -rf "$INSTALL_DIR"
-    git clone https://github.com/Justadudeinspace/blux-lite.git "$INSTALL_DIR"
+echo "🔌 Installing Python dependencies..."
+pip install --no-cache-dir litellm ollama-python open-webui
+
+echo "📂 Cloning BLUX repo (if missing)..."
+[ ! -d "$HOME/blux-lite" ] && git clone https://github.com/Justadudeinspace/blux-lite.git ~/blux-lite
+cd ~/blux-lite
+
+echo "🧹 Cleaning bad pip install lines (if exist)..."
+sed -i '/pip install pip/d' blux_lite.sh || true
+
+echo "🧠 Installing Ollama..."
+pkg install ollama -y
+
+echo "⚙️ Starting Ollama..."
+termux-wake-lock
+ollama serve &
+
+sleep 3
+
+echo "⬇️ Running model installer..."
+bash install_models.sh
+
+echo "📡 Starting LiteLLM local proxy..."
+bash start_litellm.sh
+
+echo "🔊 Checking Termux API voice plugin..."
+if ! command -v termux-tts-speak >/dev/null; then
+  echo "⚠️ Voice plugin not installed. Install Termux:API from F-Droid."
 else
-    echo "✅ blux-lite already installed in $INSTALL_DIR"
+  termux-tts-speak "BLUX-Lite voice is ready"
 fi
 
-# Copy setup script
-cp "$INSTALL_DIR/.blux_ubuntu_setup.sh" ~/
+echo "🎤 Say your command if ready:"
+if command -v termux-speech-to-text >/dev/null; then
+  USER_INPUT=$(termux-speech-to-text)
+  echo "🎧 Heard: $USER_INPUT"
+fi
 
-echo "📦 Installing Ubuntu and Ollama..."
-proot-distro install ubuntu || true
-
-echo "✅ Setup complete!"
-echo "➡ To continue:"
-echo "   proot-distro login ubuntu"
-echo "   bash ~/blux_ubuntu_setup.sh"
+echo "🧠 Launching LLM chat..."
+python3 llama_chat.py
