@@ -64,8 +64,7 @@ blux-lite/
 
 ```
 pkg update && pkg upgrade -y
-pkg install python git curl proot-distro termux-api nano -y
-pip install --upgrade pip
+pkg install python python3 git curl proot-distro termux-api nano -y
 termux-setup-storage
 git clone https://github.com/Justadudeinspace/blux-lite.git
 cd blux-lite
