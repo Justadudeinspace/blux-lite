@@ -1,15 +1,9 @@
 <center>
-
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/Justadudeinspace/blux/main/assets/logo/blux-logo.png" alt="BLUX Logo" width="320" />
-
-  <br/>
-
-  <b>Space-Age Modular AI Ecosystem</b>
+  <img src="https://raw.githubusercontent.com/Justadudeinspace/blux/main/assets/banner/blux-banner-wide.png" alt="BLUX Banner" width="100%" />
 
 </div>
-
 </center>
 
 ---
