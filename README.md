@@ -1,7 +1,7 @@
 <center>
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/Justadudeinspace/blux/main/assets/banner/blux-banner-wide.png" alt="BLUX Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/Justadudeinspace/blux-lite/assets/blux_logo.jpeg" alt="BLUX Banner" width="100%" />
 
 </div>
 </center>
