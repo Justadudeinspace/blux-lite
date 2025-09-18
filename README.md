@@ -1,5 +1,7 @@
 <div align="center">
+
   ![Banner](./assets/blux_logo.jpeg)
+  
 </div>
 
 ---
