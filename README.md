@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/blux_logo.jpeg" alt="BLUX Banner" width="100%" />
+# ![Banner](./assets/blux_logo.jpeg)
 </div>
 
 ---
