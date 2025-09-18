@@ -1,10 +1,6 @@
-<center>
 <div align="center">
-
-  <img src="./assets/blux_logo.jpeg" alt="BLUX Banner" width="100%" />
-
+  <img src=".assets/blux_logo.jpeg" alt="BLUX Banner" width="100%" />
 </div>
-</center>
 
 ---
 
