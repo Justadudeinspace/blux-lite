@@ -1,5 +1,5 @@
 <div align="center">
-# ![Banner](./assets/blux_logo.jpeg)
+  ![Banner](./assets/blux_logo.jpeg)
 </div>
 
 ---
