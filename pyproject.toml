@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blux-lite"
+version = "1.0.0"
+description = "BLUX Lite GOLD — unified AI orchestrator."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Justadudeinspace | ~JADIS" }]
+dependencies = [
+  "PyYAML",
+  "click",
+  "genkit",
+  "huggingface_hub",
+  "pydantic",
+  "requests",
+  "textual",
+  "typer",
+]
+
+[project.scripts]
+blux = "shim.launcher:main"
+
+[tool.setuptools]
+packages = ["blux"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+blux = ["**/*.json", "**/*.yaml", "**/*.yml", "**/*.txt", "**/*.tcss", "**/*.css"]
+
+[tool.setuptools.package-dir]
+blux = "blux"
+
+[tool.blux]
+upgrade_script = "scripts/main_menu/upgrade_manifests.py"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Justadudeinspace/blux-lite"
+Documentation = "https://github.com/Justadudeinspace/blux-lite#readme"
+Repository = "https://github.com/Justadudeinspace/blux-lite"
+Issues = "https://github.com/Justadudeinspace/blux-lite/issues"

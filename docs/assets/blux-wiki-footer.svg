@@ -1,0 +1,36 @@
+<svg width="320" height="70" viewBox="0 0 320 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="70" fill="#000"/>
+  <!-- Star/Orbit Emblem -->
+  <g>
+    <circle cx="44" cy="35" r="22" fill="url(#orbGlow)" stroke="#29B6F6" stroke-width="2"/>
+    <!-- 4-pointed star -->
+    <path d="M44 19 L47 30 L60 35 L47 40 L44 51 L41 40 L28 35 L41 30 Z"
+      fill="url(#starGradient)"/>
+    <!-- Orbit -->
+    <ellipse cx="44" cy="35" rx="19" ry="7" transform="rotate(-20 44 35)"
+      stroke="url(#orbitGradient)" stroke-width="2" fill="none"/>
+  </g>
+  <!-- BLUX text -->
+  <text x="78" y="45" font-size="38" font-family="Eurostile, Exo, Arial, sans-serif"
+    font-weight="bold" fill="url(#textGradient)" letter-spacing="9">BLUX</text>
+  <defs>
+    <radialGradient id="orbGlow" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#7C4DFF"/>
+      <stop offset="60%" stop-color="#29B6F6"/>
+      <stop offset="100%" stop-color="#000"/>
+    </radialGradient>
+    <linearGradient id="starGradient" x1="38" y1="19" x2="52" y2="51" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#29B6F6"/>
+      <stop offset="1" stop-color="#7C4DFF"/>
+    </linearGradient>
+    <linearGradient id="orbitGradient" x1="25" y1="35" x2="63" y2="35" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BBB"/>
+      <stop offset="1" stop-color="#29B6F6"/>
+    </linearGradient>
+    <linearGradient id="textGradient" x1="78" y1="45" x2="160" y2="10" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E3E7F7"/>
+      <stop offset="0.5" stop-color="#7C4DFF"/>
+      <stop offset="1" stop-color="#29B6F6"/>
+    </linearGradient>
+  </defs>
+</svg>
