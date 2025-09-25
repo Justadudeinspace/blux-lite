@@ -1,14 +1,15 @@
 # BLUX Lite GOLD
+# -----------------------------
 
-# Byte-compiled / optimized / DLL files
+# --- Python / bytecode ---
 __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
+# --- C extensions ---
 *.so
 
-# Distribution / packaging
+# --- Distribution / packaging ---
 .Python
 build/
 develop-eggs/
@@ -28,18 +29,19 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-# Virtual environment
+# --- Virtual environments ---
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+.venv/          # BLUX specific: actual venv used in this repo
 
-# Installer logs
+# --- Installer logs ---
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# --- Unit test / coverage reports ---
 htmlcov/
 .tox/
 .nox/
@@ -52,48 +54,83 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-cover/
 
-# Jupyter Notebook
+# --- Translations ---
+*.mo
+*.pot
+
+# --- Django stuff ---
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# --- Flask stuff ---
+instance/
+.webassets-cache
+
+# --- Scrapy stuff ---
+.scrapy
+
+# --- Sphinx documentation ---
+docs/_build/
+docs/_output/
+docs/build/
+
+# --- PyBuilder ---
+target/
+
+# --- Jupyter Notebook ---
 .ipynb_checkpoints
 
-# pyproject / setuptools metadata
-*.manifest
-*.spec
+# --- pyenv ---
+.python-version
 
-# Local config & logs
-/config/
- /logs/
- /state/
- /.cache/
-*.log
+# --- pipenv ---
+Pipfile.lock
 
-# Editors
-.vscode/
+# --- poetry ---
+poetry.lock
+
+# --- pdm ---
+pdm.lock
+
+# --- mypy / lint ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+ruff_cache/
+
+# --- PyCharm / editors ---
 .idea/
-*.swp
-*~
+.vscode/
+*.iml
 
-# System files
+# --- OS junk ---
 .DS_Store
 Thumbs.db
 
-# BLUX specific
-/engines/
-/models/
-/plugins/__pycache__/
-/scripts/__pycache__/
-/docs/__pycache__/
-*.shiv
+# --- BLUX Specific ---
+# Config/runtime (keep placeholder only)
+.config/blux-lite-gold/*
+!.config/blux-lite-gold/.gitignore
 
-# Ignore compiled binaries
-*.o
-*.a
-*.out
-*.exe
+# Secrets (keep examples only)
+.secrets/*
+!.secrets/.gitignore
+!.env.example
+!.secrets/secrets.example.env
 
-# Do not ignore secrets (handled by its own .gitignore)
-# Local secrets
-.env
-.secrets/
-*.env
+# Logs / tmp
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Reports / scans that shouldn’t ship
+docs/*_scan.md
+docs/*_summary.md

@@ -1,0 +1,5 @@
+# Never commit real secrets
+secrets.txt
+!.gitignore
+!README.md
+!secrets.example.txt
