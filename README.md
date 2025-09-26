@@ -45,7 +45,7 @@
 - [✅ Release Status](#release-status)
 - [Optional Cloud Integrations (Disabled by Default)](#optional-cloud-integrations-disabled-by-default)
 - [Audit Results (v1.0.0)](#audit-results-v100)
-- [Ashes to Code](#ashes-to-code)
+- [🌌 Ashes to Code](#-ashes-to-code)
 - [Catalogs (Engines & Models)](#catalogs-engines--models)
 - [Integrated Shell (CLI)](#integrated-shell-cli)
   - [Developer Console (Integrated Shell) — Pro workflow](#developer-console-integrated-shell--pro-workflow)
