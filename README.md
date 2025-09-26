@@ -45,6 +45,7 @@
 - [✅ Release Status](#release-status)
 - [Optional Cloud Integrations (Disabled by Default)](#optional-cloud-integrations-disabled-by-default)
 - [Audit Results (v1.0.0)](#audit-results-v100)
+- [🌌 Ashes to Code](#ashes-to-code)
 - [Catalogs (Engines & Models)](#catalogs-engines--models)
 - [Integrated Shell (CLI)](#integrated-shell-cli)
   - [Developer Console (Integrated Shell) — Pro workflow](#developer-console-integrated-shell--pro-workflow)
@@ -665,6 +666,24 @@ They are **off by default** for public releases. To enable, copy the relevant ex
 
 ---
 
+
+## 🌌 Ashes to Code
+
+**Ashes to Code (ATC)** is the raw, unfiltered journal behind the making of BLUX Lite GOLD.  
+It documents the struggle, resilience, and vision that forged this project from nothing.  
+
+> Built not in comfort, but in fire.  
+> Pushed forward through uncertainty, doubt, and hardship.  
+> Every line of code is backed by lived experience and the refusal to quit.  
+
+Ashes to Code is where BLUX shows its heart.  
+If BLUX Lite GOLD is the product — **Ashes to Code is the story.**
+
+- Follow the journey here → [Ashes to Code](https://github.com/Justadudeinspace/ashes-to-code)
+
+(( • ))
+
+---
 
 ## Catalogs (Engines & Models)
 
