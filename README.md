@@ -642,9 +642,6 @@ They are **off by default** for public releases. To enable, copy the relevant ex
 </p>
 
 
-<div align="center">
-  <a href="https://github.com/Justadudeinspace/blux">BLUX Umbrella Project by ~JADIS</a>
-</div>
 
 ---
 
