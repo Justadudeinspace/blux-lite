@@ -83,9 +83,23 @@ run_user_scripts_menu(){
 }
 
 print_footer() {
-  local signals=("Here we are." "For those who look, the light is already on." "Most will pass. A few will stay." "Not louder, only clearer." "The signal waits. The searching find.")
+  local signals=(
+    "Here we are."
+    "For those who look, the light is already on."
+    "Most will pass. A few will stay."
+    "Not louder, only clearer."
+    "The signal waits. The searching find."
+    "The journey is the reward."
+    "What you seek is seeking you."
+    "The curious find their own way."
+  )
   local idx=$(( $(date +%s) / 60 % ${#signals[@]} ))
-  printf "\n(( • ))  %s\n" "${signals[$idx]}"
+  
+  # ANSI color codes
+  local gold='\033[0;33m'
+  local nc='\033[0m' # No Color
+
+  printf "\n${gold}(( • ))${nc}  %s\n" "${signals[$idx]}"
 }
 
 if [[ "${1-}" == "user" ]]; then

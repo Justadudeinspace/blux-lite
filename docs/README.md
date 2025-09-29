@@ -1,7 +1,5 @@
 ### Quickstart
 
-### Quickstart
-
 **First run (initial setup):**
 ```bash
 cd blux-lite
@@ -30,12 +28,12 @@ This section indexes all guides, quick starts, and reference tables for the proj
 ## 📜 Quick Start Guides
 Choose the guide that matches your platform or hardware:
 
-- [Quick Start — Mobile (Low RAM)](Quick_Start_Mobile_Low_RAM.md)
-- [Quick Start — Mobile (Normal)](Quick_Start_Mobile_Normal.md)
-- [Quick Start — Mobile (High-End)](Quick_Start_Mobile_High_End.md)
-- [Quick Start — Linux](Quick_Start_Linux.md)
-- [Quick Start — Windows](Quick_Start_Windows.md)
-- [Quick Start — macOS](Quick_Start_macOS.md)
+- [Quick Start — Mobile (Low RAM)](QUICKSTART_LOW_RAM.md)
+- [Quick Start — Mobile (Normal)](QUICKSTART_NORMAL.md)
+- [Quick Start — Mobile (High-End)](QUICKSTART_HIGH_END.md)
+- [Quick Start — Linux](QUICKSTART_LINUX.md)
+- [Quick Start — Windows](QUICKSTART_WINDOWS.md)
+- [Quick Start — macOS](QUICKSTART_MACOS.md)
 
 ---
 
@@ -46,8 +44,7 @@ Choose the guide that matches your platform or hardware:
 ---
 
 ## 📊 Reference Tables
-- [MODELS_TABLE.md](MODELS_TABLE.md) — Model catalog with RAM tiers, quant suggestions, and links.
-- [ENGINES_TABLE.md](ENGINES_TABLE.md) — Engines, detection, RAM tiers, quant suggestions, links, and build commands.
+- [Engines and Models](ENGINES_MODELS.md) — Model and engine catalog with RAM tiers, quant suggestions, and links.
 
 ---
 
@@ -62,12 +59,12 @@ Choose the guide that matches your platform or hardware:
 ---
 
 ## 📌 Tips
-- For installation instructions, see the root [`README.md`](../README.md) and [`blux-lite_installer.sh`](../blux-lite_installer.sh).
+- For installation instructions, see the root [`README.md`](../README.md).
 - Use the [Storage Guide](STORAGE_GUIDE.md) to decide where to keep models and data for best performance.
 
 ---
 
-_Last updated: 2025-08-14_
+_Last updated: 2025-09-28_
 
 ---
 

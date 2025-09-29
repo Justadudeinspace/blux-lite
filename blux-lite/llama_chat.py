@@ -3,8 +3,13 @@
 python
 import requests, subprocess, os, json
 
-MEMORY_FILE = os.path.expanduser("~/blux-lite/memory.json")
-PLUGINS_DIR = os.path.expanduser("~/blux-lite/plugins")
+CONFIG_FILE = os.path.join(os.path.dirname(__file__), "..", ".config", "blux-lite-gold", "config.json")
+
+with open(CONFIG_FILE) as f:
+    config = json.load(f)
+
+MEMORY_FILE = os.path.expanduser(config["memory_file"])
+PLUGINS_DIR = os.path.expanduser(config["plugins_dir"])
 
 if not os.path.exists(MEMORY_FILE):
     with open(MEMORY_FILE, 'w') as f:
