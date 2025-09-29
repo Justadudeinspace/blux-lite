@@ -3,7 +3,7 @@
 python
 import requests, subprocess, os, json
 
-CONFIG_FILE = os.path.join(os.path.dirname(__file__), "..", ".config", "blux-lite-gold", "config.json")
+CONFIG_FILE = os.path.join(Path.home(), ".config", "blux-lite-gold", "config.json")
 
 with open(CONFIG_FILE) as f:
     config = json.load(f)
