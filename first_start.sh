@@ -53,7 +53,11 @@ elif is_debian; then
   sudo apt-get update -y
   sudo DEBIAN_FRONTEND=noninteractive apt-get install -y git python3 python3-pip python3-venv wget curl jq || true
 elif is_fedora; then
-  sudo dnf install -y git python3 python3-pip wget curl || true
+  if have dnf; then
+    sudo dnf install -y git python3 python3-pip wget curl || true
+  else
+    sudo yum install -y git python3 python3-pip wget curl || true
+  fi
 elif is_suse; then
   sudo zypper install -y git python3 python3-pip wget curl || true
 elif is_alpine; then
