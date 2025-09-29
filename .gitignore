@@ -100,3 +100,7 @@ Thumbs.db
 
 # BLUX runtime config
 .config/
+
+# Local runtime
+.venv/
+auto-start.sh
