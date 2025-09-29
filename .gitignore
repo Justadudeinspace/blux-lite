@@ -109,3 +109,15 @@ auto-start.sh
 .config/
 .venv/
 auto-start.sh
+
+# Editor/backup junk
+*.bak
+*.bak.*
+*.tcss.bak*
+*.py.bak*
+
+# Editor/backup junk
+*.bak
+*.bak.*
+*.tcss.bak*
+*.py.bak*
