@@ -1,0 +1,99 @@
+/* Global */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #000;                 /* true black */
+  color: #e5e7eb;                   /* soft light */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* Daisy field layer (behind content, above page bg) */
+.daisy-field { 
+  position: fixed; 
+  inset: 0; 
+  z-index: 0;                       /* not negative */
+  background:#000; 
+  overflow:hidden; 
+  pointer-events: none;
+}
+
+/* Content above the field */
+.wrap { 
+  position: relative; 
+  z-index: 1;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.card {
+  max-width: 820px;
+  width: 100%;
+  background: rgba(0,0,0,0.24);     /* slightly see-through */
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero { display: grid; place-items: center; margin: 1rem 0 0.5rem; }
+.hero .daisy { width: 260px; height: 260px; }
+
+/* Daisy clones */
+.daisy-field svg {
+  position: absolute;
+  filter:
+    drop-shadow(0 0 3px rgba(163,131,255,0.35))
+    drop-shadow(0 0 6px rgba(110,168,255,0.25));
+  opacity: 0.60;                    /* visible on black */
+  transition: transform 500ms ease, filter 300ms ease;
+  will-change: transform, filter;
+}
+.daisy-field svg:hover { transform: scale(1.05) rotate(2deg); }
+
+/* Branding / Text */
+.brand-gold { color: #d4af37; }     /* classic gold */
+
+h1 { margin: 0 0 0.25rem 0; font-size: 1.875rem; line-height: 1.2; color: #eaeaff; }
+.desc { margin: 0; color: #aab2d4; }
+.quote { color: #c9cde6; margin: 1rem 0 0.5rem; line-height: 1.6; }
+
+/* Admin button + status */
+footer button#admin {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #12131a; color: #aab2d4;
+  border: 1px solid #2a2c3a; border-radius: 10px;
+}
+footer button#admin[disabled] { opacity: 0.6; cursor: not-allowed; }
+#status { display: inline-block; margin-left: .75rem; font-variant-numeric: tabular-nums; color: #c9cde6; }
+.muted { color: #888; opacity: 0.8; } /* Added missing .muted class */
+
+/* Admin gating */
+.admin-locked [data-admin-only] {
+  pointer-events: none; filter: blur(1.5px) grayscale(20%); opacity: 0.45;
+  transition: filter 200ms ease, opacity 200ms ease;
+}
+.admin-unlocked [data-admin-only] { pointer-events: auto; filter: none; opacity: 1; }
+
+/* Neon accents */
+.neon-blue { color: #6ea8ff; text-shadow: 0 0 6px rgba(110,168,255,.6), 0 0 12px rgba(110,168,255,.35); }
+
+/* Neon blue links */
+a { color: #6ea8ff; text-decoration-color: rgba(110,168,255,.45); }
+a:visited { color: #6ea8ff; }
+a:hover { color: #9cc3ff; text-decoration-color: rgba(156,195,255,.65); }
+
+.cloud-link {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: #6ea8ff;
+  font-weight: 500;
+  text-decoration: none;
+}
+.cloud-link:hover {
+  color: #9cc3ff;
+  text-decoration: underline;
+}

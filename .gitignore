@@ -1,0 +1,99 @@
+# BLUX Lite GOLD
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyproject / setuptools metadata
+*.manifest
+*.spec
+
+# Local config & logs
+/config/
+ /logs/
+ /state/
+ /.cache/
+*.log
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# BLUX specific
+/engines/
+/models/
+/plugins/__pycache__/
+/scripts/__pycache__/
+/docs/__pycache__/
+*.shiv
+
+# Ignore compiled binaries
+*.o
+*.a
+*.out
+*.exe
+
+# Do not ignore secrets (handled by its own .gitignore)
+# Local secrets
+.env
+.secrets/
+*.env

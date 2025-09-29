@@ -1,0 +1,113 @@
+/* Space‑age dark + neon theme; two F‑key rows and a large, scrollable log area */
+
+Screen {
+  background: #0A0C10;
+  color: #C8D0E0;
+}
+
+#blg_header {
+  background: #0A0C10;
+  color: #C8D0E0;
+  height: 3;
+}
+
+#menu_button {
+  dock: left;
+  margin: 0 1 0 1;
+  height: 1;
+  content-align: center middle;
+  padding: 0 1;
+  background: #10131A;
+  color: #00FFFF;
+  border: round #00FFFF;
+}
+
+#banner {
+  height: auto;
+  padding: 1 2;
+  margin: 1 1;
+  background: #10131A;
+  color: #FF00FF;
+  text-style: bold;
+  border: round #00FFFF;
+}
+
+#focus_area {
+  height: 1fr;
+  margin: 0 1;
+  gap: 2;
+}
+
+#left_pane, #right_pane {
+  height: 1fr;
+  background: #0D1117;
+  border: round #00FFFF;
+  padding: 1 1;
+}
+
+#feature_title {
+  color: #00FFFF;
+  text-style: bold;
+  margin: 0 0 1 0;
+}
+
+#feature_help {
+  color: #A0AABB;
+  margin: 0 0 1 0;
+}
+
+#feature_table {
+  height: 1fr;
+  border: round #00FFFF;
+}
+
+#log_title {
+  color: #00FFFF;
+  text-style: bold;
+  margin: 0 0 1 0;
+}
+
+#log_view {
+  height: 1fr;
+  border: round #00FFFF;
+  background: #0A0F16;
+  color: #C8D0E0;
+}
+
+#fkeys_row1, #fkeys_row2 {
+  height: 3;
+  margin: 1 1 0 1;
+  layout: horizontal;
+  content-align: left middle;
+  gap: 1;
+}
+
+.fkey {
+  height: 1;
+  padding: 0 1;
+  background: #10131A;
+  color: #A0AABB;
+  border: round #00FFFF;
+}
+
+.fkey:hover {
+  color: #FFFFFF;
+  background: #13202E;
+  text-style: bold;
+}
+
+/* Dropdown buttons */
+.menu_item {
+  width: 100%;
+  content-align: left middle;
+  background: #10131A;
+  color: #A0AABB;
+  border: none;
+  padding: 0 1;
+  margin: 0 1;
+}
+.menu_item:hover {
+  color: #FFFFFF;
+  background: #13202E;
+  text-style: bold;
+}

@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blux-lite"
+version = "1.0.0"
+description = "BLUX Lite GOLD — unified AI orchestrator."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Justadudeinspace | ~JADIS" }]
+dependencies = [
+  "PyYAML==6.0.2",
+  "click==8.1.7",
+  "genkit==0.4.0",
+  "huggingface_hub==0.24.6",
+  "pydantic==2.10.5",
+  "requests==2.32.4",
+  "textual==0.79.1",
+  "typer==0.12.5",
+  "flake8==7.0.0",
+  "black==24.4.2",
+  "colorama==0.4.6; sys_platform == 'win32'",
+  "importlib-metadata==6.0.0; python_version < '3.10'",
+  "textual-dev==1.5.1",
+  "pytest==8.3.3",
+  "pre-commit==3.8.0",
+]
+
+[project.scripts]
+blux = "shim.launcher:main"
+
+[tool.setuptools]
+packages = ["blux"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+blux = ["**/*.json", "**/*.yaml", "**/*.yml", "**/*.txt", "**/*.tcss", "**/*.css"]
+
+[tool.setuptools.package-dir]
+blux = "blux"
+
+[tool.blux]
+upgrade_script = "scripts/main_menu/upgrade_manifests.py"
+
+[project.urls]
+Homepage = "https://github.com/Justadudeinspace/blux-lite"
+Documentation = "https://github.com/Justadudeinspace/blux-lite#readme"
+Repository = "https://github.com/Justadudeinspace/blux-lite"
+Issues = "https://github.com/Justadudeinspace/blux-lite/issues"

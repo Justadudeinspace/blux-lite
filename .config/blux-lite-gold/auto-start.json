@@ -1,0 +1,12 @@
+{
+  "platform": "auto",
+  "with_ml": 1,
+  "force_cpu": 0,
+  "minimal": 0,
+  "venv": ".venv",
+  "ml_mode": "auto",
+  "ui": "tui",
+  "logging": 1, 
+  "debug": 1, 
+  "generated_at": "2025-09-23T22:30:27Z"
+}
