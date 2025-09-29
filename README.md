@@ -6,6 +6,9 @@
 <h1 align="center">BLUX Lite GOLD</h1>
 <p align="center"><em>Personal AI orchestrator for trust, sovereignty, and speed.</em></p>
 
+> Local-first AI orchestrator — install, route, and run multiple models with one CLI. Portable across Linux, macOS, WSL2, Termux. Trust, sovereignty, and speed. (( • ))
+
+
 <p align="center">
   <img alt="Ubuntu/Debian Recommended" src="https://img.shields.io/badge/Ubuntu%2FDebian-Recommended-blue">
   <img alt="Termux Supported" src="https://img.shields.io/badge/Android%20Termux-Supported-green">
@@ -14,6 +17,7 @@
 </p>
 
 ---
+
 
 > **Ethical Preamble:** This software exists to support growth, healing, and autonomy — not harm. (( • ))
 
@@ -97,7 +101,7 @@ Issues/PRs welcome.
 
 - **License:** [MIT](./LICENSE)
 
-Story: Ashes to Code → https://github.com/Justadudeinspace/ashes-to-code
+Story: [Ashes to Code](https://github.com/Justadudeinspace/ashes-to-code)
 
 
 <p align="center"><em>Built mobile-first, auditable by design. Healing path only.</em><br/>(( • ))</p>
