@@ -587,7 +587,7 @@ This release is **public** to share the groundwork, inspire experimentation, and
 <details>
 <summary>Click to Expand BLG Release Status</summary>
 
-This build of **BLUX Lite GOLD v1.0.0** is published.
+This build of **BLUX Lite GOLD v1.0.1-pre** is published.
 
 ### What this means
 - ✅ Core run chain works (`first_start.sh → blux-lite.sh`)  
@@ -630,10 +630,10 @@ They are **off by default** for public releases. To enable, copy the relevant ex
 ---
 
 
-## Audit Results (v1.0.0)
+## Audit Results (v1.0.1-pre)
 
 <details>
-<summary>Click to Expand BLG v1.0.0 Audit Results</summary>
+<summary>Click to Expand BLG v1.0.1-pre Audit Results</summary>
 
 - **Bash scripts:** pass (91/91)  
 - **Python modules:** pass (25/25)  
