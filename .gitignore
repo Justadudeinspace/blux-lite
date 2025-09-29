@@ -104,3 +104,8 @@ Thumbs.db
 # Local runtime
 .venv/
 auto-start.sh
+
+# Local runtime
+.config/
+.venv/
+auto-start.sh
