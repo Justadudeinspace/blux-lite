@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
+IFS=$'\n\t'
+
 # blux_services_setup.sh - setup/enable a termux-services runit service for BLUX
 # Generated: 2025-08-19 07:25:18
-set -Eeuo pipefail
-IFS=$'\n\t'
+
 if ! command -v sv-enable >/dev/null 2>&1; then
   echo "[*] Installing termux-services..."
   pkg install -y termux-services || true

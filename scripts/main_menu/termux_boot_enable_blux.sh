@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
+IFS=$'\n\t'
+
 # termux_boot_enable_blux.sh - Use Termux:Boot to start BLUX on boot
 # Generated: 2025-08-19 07:25:18
-set -Eeuo pipefail
-IFS=$'\n\t'
+
 BOOT="$HOME/.termux/boot"; mkdir -p "$BOOT"
 cat > "$BOOT/99-blux.sh" <<'EOS'
 #!/data/data/com.termux/files/usr/bin/bash

@@ -1,48 +1,59 @@
 #!/usr/bin/env bash
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
 IFS=$'\n\t'
-. "$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)/common.sh"
 
-BLG_BANNER "Install Dependencies"
+say(){ printf '[BLUX] %s\n' "$*"; }
+warn(){ printf '[WARN] %s\n' "$*" >&2; }
+have(){ command -v "$1" >/dev/null 2>&1; }
 
-packages_common=(git curl python3 pip fzf shellcheck)
-packages_optional=(gum shellcheck)
+is_termux(){ case "${PREFIX-}" in */com.termux/*) return 0;; *) return 1;; esac; }
+is_macos(){ [ "$(uname -s)" = "Darwin" ] && return 0 || return 1; }
+is_arch(){ have pacman && return 0 || return 1; }
+is_debian(){ ( have apt-get || have apt ) && return 0 || return 1; }
+is_fedora(){ ( have dnf || have yum ) && return 0 || return 1; }
+is_suse(){ have zypper && return 0 || return 1; }
+is_alpine(){ have apk && return 0 || return 1; }
+
+say "== Install Dependencies =="
 
 if is_termux; then
   say "Detected Termux"
   pkg update -y
-  pkg install -y "${packages_common[@]}"
-  pkg install -y "${packages_optional[@]}"
+  pkg install -y git python python-pip wget curl proot tar unzip jq
+
 elif is_macos; then
   say "Detected macOS"
-  if ! command -v brew >/dev/null 2>&1; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  have brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew install git python3 wget curl jq
+
+elif is_arch; then
+  say "Detected Arch Linux"
+  sudo pacman -Sy --noconfirm git python python-pip wget curl jq
+
+elif is_debian; then
+  say "Detected Debian/Ubuntu"
+  sudo apt-get update -y
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y git python3 python3-pip python3-venv wget curl jq
+
+elif is_fedora; then
+  say "Detected Fedora"
+  if have dnf;
+    sudo dnf install -y git python3 python3-pip wget curl jq
+  else
+    sudo yum install -y git python3 python3-pip wget curl jq
   fi
-  brew update
-  brew install git curl python fzf
-  brew install gum
-elif is_linux; then
-  say "Detected Linux"
-  if command -v apt >/dev/null 2>&1; then
-    sudo apt update -y
-    sudo apt install -y git curl python3 python3-pip fzf
-  elif command -v dnf >/dev/null 2>&1; then
-    sudo dnf install -y git curl python3 python3-pip fzf
-  elif command -v pacman >/dev/null 2>&1; then
-    sudo pacman -Syu --noconfirm git curl python python-pip fzf
-  fi
-  # gum (optional)
-  if ! command -v gum >/dev/null 2>&1; then
-    curl -fsSL https://github.com/charmbracelet/gum/releases/latest/download/gum_$(uname -s | tr '[:upper:]' '[:lower:]')_amd64.tar.gz | tar -xz
-    sudo mv gum /usr/local/bin/ 2>/dev/null
-  fi
+
+elif is_suse; then
+  say "Detected openSUSE"
+  sudo zypper install -y git python3 python3-pip wget curl jq
+
+elif is_alpine; then
+  say "Detected Alpine"
+  sudo apk add --no-cache git python3 py3-pip wget curl jq
+
 else
-  warn "Unknown OS; install dependencies manually."
+  warn "Unknown distro; please install git, python3(+pip/venv), wget, curl, jq manually."
 fi
 
-say "Python venv"
-python3 -m venv "${REPO_ROOT}/.venv"
-. "${REPO_ROOT}/.venv/bin/activate"
-python -m pip install --upgrade pip
-
-say "Done."
+say "== Dependencies installed =="

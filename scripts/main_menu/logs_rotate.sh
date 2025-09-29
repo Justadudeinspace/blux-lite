@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
+IFS=$'\n\t'
+
 # logs_rotate.sh - Rotate BLUX logs older than N days from config.yaml (default 14)
 # Generated: 2025-08-19 07:25:18
-set -Eeuo pipefail
-IFS=$'\n\t'
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")"/../.. && pwd)"
-CONF="$ROOT/.config/blux-lite-gold/config.yaml"; LOG_DIR="$ROOT/.config/blux-lite-gold"; KEEP=14
+
+ROOT="$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
+CONF="$ROOT/.config/blux-lite-gold/config.yaml"
+LOG_DIR="$ROOT/.config/blux-lite-gold/logs"; KEEP=14
 if [ -f "$CONF" ] && grep -q '^logs-keep-days:' "$CONF"; then
   KEEP="$(grep '^logs-keep-days:' "$CONF" | awk -F':' '{print $2}' | xargs)"
 fi

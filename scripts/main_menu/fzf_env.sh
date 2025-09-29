@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
 IFS=$'\n\t'
 
 # Resolve paths
-SCRIPT_DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]-$0}")" && pwd -P)"
-BLG_ROOT="$SCRIPT_DIR"
-__ascents=0
-while [ "$BLG_ROOT" != "/" ] && [ ! -f "$BLG_ROOT/scripts/main_menu/logging.sh" ] && [ $__ascents -lt 8 ]; do
-  BLG_ROOT="$(dirname "$BLG_ROOT")"; __ascents=$((__ascents+1))
-done
-
-PROJECT_ROOT="${PROJECT_ROOT:-$BLG_ROOT}"
-REPO_ROOT="${REPO_ROOT:-$BLG_ROOT}"
+ROOT="$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
+PROJECT_ROOT="${PROJECT_ROOT:-$ROOT}"
+REPO_ROOT="${REPO_ROOT:-$ROOT}"
 
 # Source logging exactly once
 set +u

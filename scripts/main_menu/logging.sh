@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
 IFS=$'\n\t'
 
-: "${REPO_ROOT:=$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)}"
-: "${CONFIG_DIR:=${REPO_ROOT}/.config/blux-lite-gold}"
+ROOT="$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
+
+: "${CONFIG_DIR:=${ROOT}/.config/blux-lite-gold}"
 : "${LOG_DIR:=${CONFIG_DIR}/logs}"
 mkdir -p "${LOG_DIR}"
 

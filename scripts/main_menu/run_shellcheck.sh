@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
+IFS=$'\n\t'
+
 # run_shellcheck.sh - Lint all .sh files with shellcheck
 # Generated: 2025-08-19 07:25:18
-set -Eeuo pipefail
-IFS=$'\n\t'
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")"/../.. && pwd)"
+
+ROOT="$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
+
 if ! command -v shellcheck >/dev/null 2>&1; then
   echo "[WARN] shellcheck not installed. pkg install shellcheck"; exit 0; fi
 mapfile -t files < <(find "$ROOT" -type f -name "*.sh" -print | sort)

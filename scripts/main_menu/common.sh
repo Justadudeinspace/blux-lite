@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
 IFS=$'\n\t'
 
@@ -25,7 +26,7 @@ is_termux(){ case "${PREFIX-}" in */com.termux/*) return 0;; *) return 1;; esac;
 is_macos(){ [ "$(uname -s)" = "Darwin" ]; }
 is_linux(){ [ "$(uname -s)" = "Linux" ]; }
 
-REPO_ROOT="${REPO_ROOT:-$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)}"
-CONFIG_DIR="${CONFIG_DIR:-${REPO_ROOT}/.config/blux-lite-gold}"
+ROOT="${ROOT:-$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"}
+CONFIG_DIR="${CONFIG_DIR:-${ROOT}/.config/blux-lite-gold}"
 LOG_DIR="${LOG_DIR:-${CONFIG_DIR}/logs}"
 mkdir -p "${LOG_DIR}"

@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
+IFS=$'\n\t'
+
 # blux_box86_wine.sh - helper skeleton for Box86/Box64 + Wine on Termux/PRoot
 # Generated: 2025-08-19 07:25:18
-set -Eeuo pipefail
-IFS=$'\n\t'
+
 echo "[INFO] Box86/Box64 + Wine typically require PRoot + X11/VNC. This is a stub helper."
 echo "Steps (high-level):"
 echo "  1) proot-distro login archlinux"

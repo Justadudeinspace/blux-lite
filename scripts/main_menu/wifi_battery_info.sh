@@ -3,8 +3,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-say(){ printf '[BLUX] %s\n' "$*"; }
-warn(){ printf '[WARN] %s\n' "$*" >&2; }
+say(){ printf "[BLUX] %s\n" "$*"; }
+warn(){ printf "[WARN] %s\n" "$*" >&2; }
 have(){ command -v "$1" >/dev/null 2>&1; }
 is_termux(){ case "${PREFIX-}" in */com.termux/*) return 0;; *) return 1;; esac; }
 
@@ -25,7 +25,9 @@ EOF
 case "${1-}" in -h|--help|help) usage; exit 0;; esac
 
 TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-cleanup(){ rm -rf "$TMP_DIR"; }
+cleanup(){
+  rm -rf "$TMP_DIR"
+}
 trap cleanup EXIT
 
 if ! is_termux; then

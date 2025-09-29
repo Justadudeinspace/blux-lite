@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
-set -Eeuo pipefail
+IFS=$'\n\t'
+
 # shellcheck disable=SC1091
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/env.sh"
 
-CATALOG="$ROOT_DIR/docs/catalog.json"
+ROOT="$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
+CATALOG="$ROOT/docs/catalog.json"
 
 _need_jq() { command -v jq >/dev/null 2>&1 || { echo "[!] 'jq' required"; return 1; }; }
 _catalog_ok() { [[ -f "$CATALOG" ]] || { echo "[!] Missing $CATALOG"; return 1; }; }
@@ -16,17 +15,14 @@ _catalog_ok() { [[ -f "$CATALOG" ]] || { echo "[!] Missing $CATALOG"; return 1; 
 _list_by_tag() {
   local tag="${1:-general}" engine="${2:-gguf}"
   _need_jq || return 1; _catalog_ok || return 1
-  jq -r --arg tag "$tag" --arg engine "$engine" '
-    .[$engine] // [] | map(select(.tags and (.tags | index($tag)))) |
-    to_entries | .[] | "\(.key+1). \(.value.label)  [" + (.value.id // "no-id") + "]"
-  ' "$CATALOG"
+  jq -r --arg tag "$tag" --arg engine "$engine" \
+    '."$engine" // [] | map(select(.tags and (.tags | index("$tag")))) |\n    to_entries | .[] | "\(.key+1). \(.value.label)  [" + (.value.id // "no-id") + "]"'
 }
 
 _json_by_index() {
   local tag="$1" engine="$2" idx="$3"
-  jq -r --arg tag "$tag" --arg engine "$engine" --argjson i "$((idx-1))" '
-    .[$engine] // [] | map(select(.tags and (.tags | index($tag)))) | .[$i]
-  ' "$CATALOG"
+  jq -r --arg tag "$tag" --arg engine "$engine" --argjson i "$((idx-1))" \
+    '."$engine" // [] | map(select(.tags and (.tags | index("$tag")))) | .[$i]'
 }
 
 select_model_by_tag() {
@@ -39,9 +35,9 @@ select_model_by_tag() {
   id=$(echo "$json" | jq -r '.id // empty'); label=$(echo "$json" | jq -r '.label // empty')
   if [[ "$engine" = "gguf" ]]; then
     path=$(echo "$json" | jq -r '.path // empty')
-    [[ -f "$ROOT_DIR/$path" ]] || { echo "[!] GGUF missing: $ROOT_DIR/$path"; return 1; }
+    [[ -f "$ROOT/$path" ]] || { echo "[!] GGUF missing: $ROOT/$path"; return 1; }
     export BLUX_SELECTED_ENGINE="gguf"
-    export BLUX_SELECTED_MODEL_PATH="$ROOT_DIR/$path"
+    export BLUX_SELECTED_MODEL_PATH="$ROOT/$path"
     export BLUX_SELECTED_MODEL_ID="$id"
     echo "[OK] GGUF selected: $label"
   else

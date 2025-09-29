@@ -4,10 +4,17 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # -------- helpers --------
-say(){  printf '[BLUX] %s\n' "$*"; }
-warn(){ printf '[WARN] %s\n' "$*" >&2; }
-have(){ command -v "$1" >/dev/null 2>&1; }
-is_termux(){ case "${PREFIX-}" in */com.termux/*) return 0;; *) return 1;; esac; }
+say(){\n  printf '[BLUX] %s\n' "$*";
+}
+warn(){
+  printf '[WARN] %s\n' "$*" >&2;
+}
+have(){
+  command -v "$1" >/dev/null 2>&1;
+}
+is_termux(){
+  case "${PREFIX-}" in */com.termux/*) return 0;; *) return 1;; esac;
+}
 
 usage(){
   cat <<'EOF'
@@ -48,8 +55,8 @@ while [ $# -gt 0 ]; do
 done
 
 # -------- locate repo + load secrets (optional) --------
-HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-ROOT="$(cd "$HERE/../.." && pwd -P)"
+ROOT="$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
+HERE="$ROOT/scripts/main_menu"
 if [ -f "$HERE/load_secrets.sh" ]; then
   # shellcheck disable=SC1090
   . "$HERE/load_secrets.sh" || warn "load_secrets.sh returned non-zero"
@@ -69,13 +76,13 @@ pattern_for(){
     HF_TOKEN)             echo '^hf_[A-Za-z0-9]+' ;;
     OPENAI_API_KEY)       echo '^(sk-|oa-).+' ;;
     AZURE_OPENAI_API_KEY) echo '^.+$' ;;  # tenant setups vary; just presence
-    GEMINI_API_KEY)       echo '^.+$' ;;
-    ANTHROPIC_API_KEY)    echo '^.+$' ;;
-    TOGETHER_API_KEY)     echo '^.+$' ;;
-    DEEPSEEK_API_KEY)     echo '^.+$' ;;
-    MISTRAL_API_KEY)      echo '^.+$' ;;
-    PPLX_API_KEY)         echo '^.+$' ;;
-    XAI_API_KEY)          echo '^.+$' ;;
+    GEMINI_API_KEY)       echo '^.+$' ;; 
+    ANTHROPIC_API_KEY)    echo '^.+$' ;; 
+    TOGETHER_API_KEY)     echo '^.+$' ;; 
+    DEEPSEEK_API_KEY)     echo '^.+$' ;; 
+    MISTRAL_API_KEY)      echo '^.+$' ;; 
+    PPLX_API_KEY)         echo '^.+$' ;; 
+    XAI_API_KEY)          echo '^.+$' ;; 
     *)                    echo '' ;;
   esac
 }
@@ -110,10 +117,10 @@ for key in "${KEYS[@]}"; do
   fi
 
   # json item
-  [ $first -eq 0 ] && JSON_ITEMS+=","
+  [ $first -eq 0 ] && JSON_ITEMS+=,
   first=0
-  esc_val="$(printf '%s' "${val:-}" | sed 's/\\/\\\\/g; s/"/\\"/g')"
-  JSON_ITEMS+="{\"key\":\"$key\",\"present\":$([ $present -eq 1 ] && echo true || echo false),\"valid\":$([ $valid -eq 1 ] && echo true || echo false),\"value\":\"$esc_val\"}"
+  esc_val="$(printf '%s' "${val:-}" | sed 's/\\/\\\\/g; s/"/\"/g')"
+  JSON_ITEMS+="{\"key\":\"$key\",\"present\":$([ $present -eq 1 ] && echo true || echo false), \"valid\":$([ $valid -eq 1 ] && echo true || echo false), \"value\":\"$esc_val\"}"
 
   # counters (missing or invalid counts as miss)
   if [ "$present" -eq 1 ] && [ "$valid" -eq 1 ]; then
@@ -123,13 +130,14 @@ for key in "${KEYS[@]}"; do
   fi
 done
 
-JSON_ITEMS+="]"
+JSON_ITEMS+= \"]"
 summary="Summary: OK=$ok, Missing_or_invalid=$miss"
 [ "$QUIET" -eq 0 ] && say "$summary"
 
 if [ "$JSON" -eq 1 ]; then
   raw_json="{\"ok\":$ok,\"missing_or_invalid\":$miss,\"items\":$JSON_ITEMS}"
-  if have jq; then
+  if have jq;
+    then
     printf '%s\n' "$raw_json" | jq .
   else
     printf '%s\n' "$raw_json"

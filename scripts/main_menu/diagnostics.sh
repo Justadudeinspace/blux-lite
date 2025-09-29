@@ -1,16 +1,23 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
+IFS=$'\n\t'
+
 # diagnostics.sh - System diagnostics (Termux-friendly)
 # Generated: 2025-08-19 07:25:18
-set -Eeuo pipefail
-IFS=$'\n\t'
+
 have(){ command -v "$1" >/dev/null 2>&1; }
+is_termux(){ case "${PREFIX-}" in */com.termux/*) return 0;; *) return 1;; esac; }
+
 echo "=== uname -a ==="; uname -a || true
-echo "=== termux-info ==="; have termux-info && termux-info | head -n 40 || echo "termux-info not installed"
+
+if is_termux && have termux-info; then
+  echo "=== termux-info ==="
+  termux-info | head -n 40
+else
+  echo "=== termux-info === (skipped: not on termux or termux-info not found)"
+fi
+
 echo "=== Disk ==="; have duf && duf || df -h
 echo "=== Procs ==="; have btop && btop || have htop && htop || true
 echo "Top mem:"; ps -o pid,ppid,cmd,%mem,%cpu --sort=-%mem | head

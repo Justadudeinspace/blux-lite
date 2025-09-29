@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-TMP_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t blux)"
-IFS=$'\n\t'
-cleanup(){ rm -rf "$TMP_DIR"; }
-trap cleanup EXIT
+[ "${BLG_DEBUG:-0}" = "1" ] && set -x
 set -euo pipefail
-ROOT="${BLUX_ROOT:-$HOME/blux-lite}"
+IFS=$'\n\t'
+
+ROOT="$(cd -- "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
+
 echo "== Uninstall / Cleanup =="
 echo "This will remove engines/ and models/ under: $ROOT"
 echo "Apps, projects, and configs will remain."
