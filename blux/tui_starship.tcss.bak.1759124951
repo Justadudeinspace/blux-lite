@@ -1,14 +1,19 @@
-/* Space‑age dark + neon theme; two F‑key rows and a large, scrollable log area */
+/* Space-age dark + neon theme; two F-key rows and a large, scrollable log area */
 
 Screen {
   background: #0A0C10;
   color: #C8D0E0;
-}
-
-#blg_header {
-  background: #0A0C10;
-  color: #C8D0E0;
-  height: 3;
+  /* Add a subtle scanline effect */
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.06),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.06)
+  );
+  background-size: 100% 4px, 6px 100%;
 }
 
 #menu_button {
@@ -22,24 +27,16 @@ Screen {
   border: round #00FFFF;
 }
 
-#banner {
-  height: auto;
-  padding: 1 2;
-  margin: 1 1;
-  background: #10131A;
-  color: #FF00FF;
-  text-style: bold;
-  border: round #00FFFF;
-}
-
 #focus_area {
   height: 1fr;
   margin: 0 1;
   gap: 2;
+  layout: horizontal;
 }
 
 #left_pane, #right_pane {
   height: 1fr;
+  width: 1fr;
   background: #0D1117;
   border: round #00FFFF;
   padding: 1 1;
@@ -56,7 +53,7 @@ Screen {
   margin: 0 0 1 0;
 }
 
-#feature_table {
+#plugin_table {
   height: 1fr;
   border: round #00FFFF;
 }
@@ -94,6 +91,7 @@ Screen {
   color: #FFFFFF;
   background: #13202E;
   text-style: bold;
+  border: round #FF00FF;
 }
 
 /* Dropdown buttons */
@@ -110,4 +108,27 @@ Screen {
   color: #FFFFFF;
   background: #13202E;
   text-style: bold;
+}
+
+#status_line {
+    height: 1;
+    margin: 1 1 0 1;
+    content-align: right middle;
+}
+
+/* Blinking cursor effect */
+.blinking {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
