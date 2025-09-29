@@ -602,30 +602,34 @@ This release is **public** to share the groundwork, inspire experimentation, and
 <details>
 <summary>Click to Expand BLG Release Status</summary>
 
-This build of **BLUX Lite GOLD v1.0.0** is published as a **Proof of Concept (not ready for production)**.
+This build of **BLUX Lite GOLD v1.0.1-pre** is published.
 
 ### What this means
-- ✅ Core run chain works (`first_start.sh → blux-lite.sh`)  
+- ✅ Core run chain works (`first_start.sh → auto-start.sh → blux-lite.sh`)  
 - ✅ Orchestrator modules and menus load without fatal errors  
 - ✅ Automated scans (Python + shell) pass syntax and lint checks  
-- ⚠️ **TUI (Textual UI) is incomplete** — navigation is minimal, errors may occur when moving between menus  
-- ⚠️ Cross-platform testing still incomplete (macOS, WSL2, Linux variants)  
-- ⚠️ Expect bugs, rough edges, and missing polish — this is an *early learning build*  
+- ✅ **33+ main_menu scripts standardized** with portable headers & helpers  
+- ✅ Packaging verified (sdist + wheel build clean in `dist/`)  
+- ⚠️ **TUI** navigation improving but still incomplete — rough edges may exist  
+- ⚠️ Cross-platform testing in progress (macOS, WSL2, Linux variants)  
+- ⚠️ Expect bugs, rough edges, and missing polish — this is still a *pre-release*  
 
 ### Scope of validation
-- Python modules: **syntax checks + imports**  
-- Shell scripts: **hardened flags + static scan**  
-- TUI wrappers: **smoke tested only**  
+- Python modules: **syntax checks + imports pass**  
+- Shell scripts: **strict mode enforced** (`set -euo pipefail`) + exec bits verified  
+- TUI wrappers: **smoke tested** on Termux (functional coverage minimal)  
 
 ### Next steps
-- Expand orchestrator with real model integration  
-- Harden cross-platform support  
+- Wire orchestrator routing into external tools (Gemini CLI / Ollama)  
+- Expand cross-platform support  
 - Fill out TUI navigation + improve UI design  
-- Document reproducible installation & upgrade flow  
+- Document reproducible install & upgrade flow  
 
 👉 This release is **open for feedback and community testing**. Please file issues for bugs, gaps, or improvements.
 
 </details>
+
+
 
 
 ---
@@ -646,20 +650,22 @@ They are **off by default** for public releases. To enable, copy the relevant ex
 ---
 
 
-## Audit Results (v1.0.0)
+## Audit Results (v1.0.1-pre)
 
 <details>
-<summary>Click to Expand BLG v1.0.0 Audit Results</summary>
+<summary>Click to Expand BLG v1.0.1-pre Audit Results</summary>
 
-- **Bash scripts:** pass (91/91)  
-- **Python modules:** pass (25/25)  
-- **TUI wrappers:** pass (49/49) — but **functional coverage is minimal**; UI is incomplete and navigation errors are expected  
-- **Confidence rating:** 75%  
-- **25% reserved for cross-platform testing / debugging** (macOS variations, WSL2, Linux distros, shells, etc.)
-
-⚠️ **Note:** This release is a PoC. The TUI is intentionally minimal at this stage. Focus is on orchestrator stability and core run path; UI will expand in future iterations.
+- **Bash scripts:** pass (33+ standardized in `scripts/main_menu/`)  
+- **Python modules:** pass (imports verified; orchestrator, CLI, TUI)  
+- **TUI wrappers:** pass (smoke tested on Termux)  
+- **Confidence rating:** 80%  
+- **20% reserved for cross-platform testing / debugging** (macOS, WSL2, Linux distros, shells)  
+- **Strict-mode enforced** across all shell scripts (`set -euo pipefail` + exec bits)  
+- **Config paths normalized** under `~/.config/blux-lite-gold/`  
+- **Packaging:** sdist + wheel built clean (`dist/blux_lite-1.0.0.*`)  
 
 </details>
+
 
 ---
 
