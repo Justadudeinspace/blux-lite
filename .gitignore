@@ -97,3 +97,6 @@ Thumbs.db
 .env
 .secrets/
 *.env
+
+# BLUX runtime config
+.config/
